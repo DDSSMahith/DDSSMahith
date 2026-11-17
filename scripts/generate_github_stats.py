@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render a GitHub profile dashboard from the account's public GraphQL data."""
+"""Render a GitHub profile dashboard from the account's accessible GraphQL data."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ from pathlib import Path
 
 
 USERNAME = os.environ.get("GITHUB_USERNAME", "DDSSMahith")
-TOKEN = os.environ.get("GITHUB_TOKEN")
+TOKEN = os.environ.get("PROFILE_TOKEN") or os.environ.get("GITHUB_TOKEN")
 OUTPUT = Path("assets/github-activity.svg")
 QUERY = """
 query($login: String!, $from: DateTime!, $to: DateTime!) {
@@ -34,7 +34,7 @@ query($login: String!, $from: DateTime!, $to: DateTime!) {
         weeks { contributionDays { date contributionCount contributionLevel } }
       }
     }
-    repositories(first: 100, ownerAffiliations: OWNER, privacy: PUBLIC, isFork: false) {
+    repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {
       totalCount
       nodes {
         stargazerCount
@@ -299,7 +299,7 @@ def draw_languages(stats: dict, out: list[str]) -> None:
     total = sum(item["size"] for _, item in entries)
     if not total:
         out.append(label(35, 490, "LANGUAGES", size=12, color="#8b949e", weight=600))
-        out.append(label(35, 516, "No public language data yet", size=11, color="#8b949e"))
+        out.append(label(35, 516, "No repository language data yet", size=11, color="#8b949e"))
         return
     top = entries[:5]
     other = sum(item["size"] for _, item in entries[5:])
@@ -316,7 +316,7 @@ def draw_languages(stats: dict, out: list[str]) -> None:
             color = LANGUAGE_COLORS.get(name, "#8b949e")
         percentage = size / total * 100
         out.append(f'<path d="{path}" transform="translate({cx} {cy})" fill="{color}" stroke="#0d1117" stroke-width="1.4">'
-                   f'<title>{esc(name)}: {percentage:.1f}% of public repository languages</title></path>')
+                   f'<title>{esc(name)}: {percentage:.1f}% of accessible repository languages</title></path>')
         angle += span
     out.append(label(cx, cy - 2, "LANG", size=9, color="#8b949e", anchor="middle", weight=600))
     out.append(label(cx, cy + 12, f"{len(entries)}", size=12, color="#e6edf3", anchor="middle", weight=600))
@@ -363,7 +363,7 @@ def render_summary(stats: dict) -> str:
         '<title id="title">Live GitHub stats for DDSSMahith</title>',
         '<desc id="desc">Current stars, yearly commits, pull requests, issues, contributed repositories, contribution streaks, and programming language breakdown.</desc>',
         '<rect width="900" height="710" fill="#010409"/>',
-        '<style>text{font-family:Arial,Helvetica,sans-serif}</style>',
+        '<style>text{font-family:Arial,Helvetica,sans-serif}@media(prefers-reduced-motion:reduce){animate,animateTransform{display:none}}</style>',
     ]
     panel = "#0b100d"
     border = "#39443e"
@@ -394,6 +394,16 @@ def render_summary(stats: dict) -> str:
     out.append(label(cx, cy + 3, f'{stats["activeDays"]}', size=23, color=value_color, anchor="middle", weight=700))
     out.append(label(cx, cy + 20, "ACTIVE DAYS", size=8, color=muted, anchor="middle", weight=600))
 
+    # Profile grade sits in the open space between the account totals and active-days ring.
+    grade_cx, grade_cy, grade_r = 580, 133, 42
+    grade_circumference = 2 * math.pi * grade_r
+    out.append(f'<circle cx="{grade_cx}" cy="{grade_cy}" r="{grade_r}" fill="none" stroke="#263520" stroke-width="8"/>')
+    out.append(f'<circle cx="{grade_cx}" cy="{grade_cy}" r="{grade_r}" fill="none" stroke="{title_color}" stroke-width="8" '
+               f'stroke-dasharray="{grade_circumference - 7:.1f} 7" transform="rotate(-90 {grade_cx} {grade_cy})">'
+               f'<animate attributeName="stroke-dashoffset" from="{grade_circumference - 7:.1f}" to="0" dur="1.2s" fill="freeze"/></circle>')
+    out.append(label(grade_cx, grade_cy + 8, "S", size=34, color=value_color, anchor="middle", weight=700))
+    out.append(label(grade_cx, 194, "PROFILE RATING", size=8, color=muted, anchor="middle", weight=600))
+
     # Contribution totals and streaks
     out.append(f'<rect x="20" y="251" width="860" height="220" rx="11" fill="{panel}" stroke="{border}" stroke-width="1.4"/>')
     out.append(label(46, 283, "CONTRIBUTIONS & STREAKS", size=15, color=title_color, weight=700))
@@ -405,6 +415,10 @@ def render_summary(stats: dict) -> str:
 
     ring_r, ring_c = 46, centers[1]
     out.append(f'<circle cx="{ring_c}" cy="363" r="{ring_r}" fill="none" stroke="#263520" stroke-width="7"/>')
+    out.append(f'<g transform="translate({ring_c - 12} 291)" fill="{title_color}"><title>Current streak flame</title>'
+               '<path d="M12 1C13.5 5 11.5 7 10 9.5 8.7 8.3 8 6.8 8.2 5 5.2 7.7 4 10.4 4 13.4 4 18.7 7.6 22 12 22 16.8 22 20 18.1 20 13.6 20 8.5 17.1 4.4 12 1Z"/>'
+               f'<path d="M12 19c-2.2 0-3.6-1.5-3.6-3.5 0-1.2.7-2.4 1.9-3.5.2 1.7 1.3 2.1 1.8 2.5.7-.9 1.6-1.7 1.7-3.3 1.2 1.2 2.2 2.6 2.2 4.2 0 2.1-1.7 3.6-4 3.6Z" fill="{panel}"/>'
+               '<animate attributeName="opacity" values=".72;1;.86;.72" dur="1.2s" repeatCount="indefinite"/></g>')
     current_progress = min(stats["currentStreak"] / max(stats["longestStreak"], 1), 1)
     out.append(f'<circle cx="{ring_c}" cy="363" r="{ring_r}" fill="none" stroke="{title_color}" stroke-width="7" '
                f'stroke-dasharray="{2*math.pi*ring_r*current_progress:.1f} {2*math.pi*ring_r*(1-current_progress):.1f}" transform="rotate(-90 {ring_c} 363)"/>')
@@ -443,7 +457,7 @@ def render_summary(stats: dict) -> str:
             out.append(f'<circle cx="{x}" cy="{y-4}" r="5" fill="{color}"/>')
             out.append(label(x + 13, y, f"{display}  {percent:.2f}%", size=11, color=value_color))
     else:
-        out.append(label(48, 582, "No public repository language data yet", size=12, color=muted))
+        out.append(label(48, 582, "No repository language data yet", size=12, color=muted))
     out.append('</svg>')
     return "\n".join(out) + "\n"
 
@@ -453,7 +467,7 @@ def main() -> None:
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(render(stats), encoding="utf-8")
     Path("assets/github-summary.svg").write_text(render_summary(stats), encoding="utf-8")
-    print(f"Updated {OUTPUT} for @{stats['login']} ({stats['contributions']:,} contributions, {stats['repoCount']} public repositories).")
+    print(f"Updated {OUTPUT} for @{stats['login']} ({stats['contributions']:,} contributions, {stats['repoCount']} accessible repositories).")
 
 
 if __name__ == "__main__":

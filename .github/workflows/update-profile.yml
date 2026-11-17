@@ -23,6 +23,9 @@ jobs:
 
       - name: Generate animated charts from GitHub data
         env:
+          # Optional: add a PROFILE_TOKEN secret with read:user and access to private repositories.
+          # The default GITHUB_TOKEN can only read this workflow's repository.
+          PROFILE_TOKEN: ${{ secrets.PROFILE_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_USERNAME: ${{ github.repository_owner }}
         run: python3 scripts/generate_github_stats.py
