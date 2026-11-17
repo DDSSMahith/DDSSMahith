@@ -35,22 +35,22 @@
 <text x="737.0" y="405.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="middle">2026-06-28 – 2026-07-31</text>
 <rect x="20" y="486" width="860" height="205" rx="11" fill="#0b100d" stroke="#39443e" stroke-width="1.4"/>
 <text x="46.0" y="520.0" fill="#b6d900" font-family="Arial, sans-serif" font-size="17px" font-weight="700" text-anchor="start">MOST USED LANGUAGES</text>
-<rect x="46.00" y="545.0" width="640.10" height="11" fill="#DA5B0B"/>
-<rect x="686.10" y="545.0" width="54.13" height="11" fill="#3178c6"/>
-<rect x="740.23" y="545.0" width="36.03" height="11" fill="#3572A5"/>
-<rect x="776.26" y="545.0" width="20.43" height="11" fill="#f1e05a"/>
-<rect x="796.69" y="545.0" width="16.39" height="11" fill="#222c37"/>
-<rect x="813.08" y="545.0" width="40.92" height="11" fill="#8b949e"/>
+<rect x="46.00" y="545.0" width="638.95" height="11" fill="#DA5B0B"/>
+<rect x="684.95" y="545.0" width="54.03" height="11" fill="#3178c6"/>
+<rect x="738.98" y="545.0" width="37.42" height="11" fill="#3572A5"/>
+<rect x="776.40" y="545.0" width="20.39" height="11" fill="#f1e05a"/>
+<rect x="796.79" y="545.0" width="16.36" height="11" fill="#222c37"/>
+<rect x="813.15" y="545.0" width="40.85" height="11" fill="#8b949e"/>
 <circle cx="49" cy="581" r="5" fill="#DA5B0B"/>
-<text x="62.0" y="585.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">Jupyter Notebook  79.22%</text>
+<text x="62.0" y="585.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">Jupyter Notebook  79.08%</text>
 <circle cx="49" cy="609" r="5" fill="#3178c6"/>
-<text x="62.0" y="613.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">TypeScript  6.70%</text>
+<text x="62.0" y="613.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">TypeScript  6.69%</text>
 <circle cx="49" cy="637" r="5" fill="#3572A5"/>
-<text x="62.0" y="641.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">Python  4.46%</text>
+<text x="62.0" y="641.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">Python  4.63%</text>
 <circle cx="443" cy="581" r="5" fill="#f1e05a"/>
-<text x="456.0" y="585.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">JavaScript  2.53%</text>
+<text x="456.0" y="585.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">JavaScript  2.52%</text>
 <circle cx="443" cy="609" r="5" fill="#222c37"/>
-<text x="456.0" y="613.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">ShaderLab  2.03%</text>
+<text x="456.0" y="613.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">ShaderLab  2.02%</text>
 <circle cx="443" cy="637" r="5" fill="#8b949e"/>
 <text x="456.0" y="641.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">Other  5.06%</text>
 </svg>
