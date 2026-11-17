@@ -213,11 +213,11 @@ def draw_calendar(stats: dict, out: list[str]) -> None:
         # Center each voxel over its calendar tile and inset it slightly. The
         # exposed floor between columns keeps dense periods from reading as a
         # single wall of interlocking faces.
-        size = step * .76
+        size = step * .88
         center_x, center_y = x + step, y
         top = [(center_x - size, center_y), (center_x, center_y - size * .5),
                (center_x + size, center_y), (center_x, center_y + size * .5)]
-        height = min(50.0, 7.0 + math.log2(count + 1) * 6.2)
+        height = min(38.0, 4.0 + math.log2(count + 1) * 4.7)
         raised = [(px, py - height) for px, py in top]
         left = [top[3], top[0], raised[0], raised[3]]
         right = [top[0], top[1], raised[1], raised[0]]
@@ -227,8 +227,8 @@ def draw_calendar(stats: dict, out: list[str]) -> None:
                    f'<animateTransform attributeName="transform" type="translate" values="0 5;0 0" '
                    f'dur=".52s" begin="{delay:.2f}s" calcMode="spline" '
                    f'keySplines=".2 .7 .2 1" fill="freeze"/>'
-                   f'<polygon points="{polygon(left)}" fill="{shade(base, .40)}" stroke="#062418" stroke-width=".55"/>'
-                   f'<polygon points="{polygon(right)}" fill="{shade(base, .64)}" stroke="#062418" stroke-width=".55"/>'
+                   f'<polygon points="{polygon(left)}" fill="{shade(base, .52)}" stroke="#062418" stroke-width=".55"/>'
+                   f'<polygon points="{polygon(right)}" fill="{shade(base, .76)}" stroke="#062418" stroke-width=".55"/>'
                    f'<polygon points="{polygon(raised)}" fill="{base}" stroke="#062418" stroke-width=".7"/>'
                    f'</g>')
 
