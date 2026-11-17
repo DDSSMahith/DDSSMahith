@@ -192,7 +192,9 @@ def draw_calendar(stats: dict, out: list[str]) -> None:
     for col, week in enumerate(weeks):
         for row, day in enumerate(week["contributionDays"]):
             cells.append((col, row, day))
-    cells.sort(key=lambda cell: (cell[0] + cell[1], cell[1]))
+    # In this projection screen depth follows col - row. Paint far cells first
+    # so nearer voxel faces cleanly occlude them instead of crossing through.
+    cells.sort(key=lambda cell: (cell[0] - cell[1], cell[0] + cell[1]))
 
     ox, oy, step = 22.0, 86.0, 12.15
     # Paint the whole floor first. Drawing each floor tile between its
