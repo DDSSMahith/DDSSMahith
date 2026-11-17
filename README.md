@@ -15,19 +15,17 @@
 - Currently studying **AI &amp; ML at Woxsen University** and building **VeriSight**, a media-verification tool.
 - Co-founder of **Omnicore Inc** and R&amp;D Head of the Woxsen Science Club.
 
-## Socials
-
-[Portfolio](https://ddssmahith.netlify.app) · [LinkedIn](https://www.linkedin.com/in/d-d-s-s-mahith) · [Email](mailto:ddssmahith11@gmail.com) · [GitHub](https://github.com/DDSSMahith)
-
 ## Tech Stack
 
-- **AI &amp; LLM engineering** · LLM API integration, RAG, LangChain, AI automation, model evaluation
-- **Machine learning &amp; data science** · Scikit-learn, Pandas, TensorFlow, Keras, PyTorch, neural networks, CNNs, time-series analysis, predictive modeling, model optimization, Matplotlib, data visualization
-- **Computer vision** · OpenCV, facial recognition, image classification, deepfake and media analysis
-- **Programming languages** · Python, JavaScript, TypeScript, Java, SQL, C#
-- **Web &amp; backend** · React.js, Next.js, Node.js, Express.js, FastAPI, REST APIs, HTML5, CSS3
-- **Databases &amp; cloud** · PostgreSQL, MySQL, MongoDB, AWS, Docker, Vercel
-- **Automation &amp; tools** · n8n, Make.io, Apify, Git, GitHub, Unity
+- **AI &amp; LLMs** · LLM API integration, RAG, LangChain, OpenRouter, Google GenAI, model evaluation, AI automation
+- **Machine learning, data &amp; NLP** · Scikit-learn, NumPy, Pandas, SciPy, TensorFlow, Keras, PyTorch, NLTK, spaCy, TextBlob, neural networks, CNNs, time-series analysis, predictive modeling, model optimization, Matplotlib, Seaborn, Plotly, WordCloud
+- **Computer vision** · OpenCV, MediaPipe, Ultralytics YOLO, Pillow, scikit-image, facial recognition, image classification, deepfake and media analysis
+- **Languages** · Python, JavaScript, TypeScript, Java, SQL, C#, HTML5, CSS3
+- **Web &amp; mobile** · React, Next.js, Vue, React Native, Expo, Vite, Tailwind CSS, React Router, Recharts, Streamlit
+- **Backend &amp; data** · Node.js, Express.js, FastAPI, Django REST Framework, REST APIs, PostgreSQL, Neon, MySQL, MongoDB, Supabase, Drizzle ORM
+- **Cloud &amp; developer tools** · AWS, Docker, Vercel, Cloudflare Workers, Wrangler, Git, GitHub
+- **Automation &amp; scraping** · n8n, Make.io, Apify, Requests, Beautiful Soup, lxml
+- **Game development** · Unity, ShaderLab, HLSL
 
 ## GitHub Stats
 
