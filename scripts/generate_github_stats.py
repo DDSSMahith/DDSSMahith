@@ -49,9 +49,13 @@ query($login: String!, $from: DateTime!, $to: DateTime!) {
 """
 
 WIDTH, HEIGHT = 1100, 650
-# A restrained green spectrum gives the calendar a continuous RGB-style sweep
-# while keeping every contribution column in the same color family.
-CALENDAR_GREENS = ("#064e3b", "#047857", "#059669", "#10b981", "#22c55e", "#4ade80", "#86efac")
+CONTRIBUTION_COLORS = {
+    "NONE": "#444444",
+    "FIRST_QUARTILE": "#1B7D28",
+    "SECOND_QUARTILE": "#24A736",
+    "THIRD_QUARTILE": "#2DD143",
+    "FOURTH_QUARTILE": "#57DA69",
+}
 LANGUAGE_COLORS = {
     "Python": "#3572A5", "TypeScript": "#3178c6", "JavaScript": "#f1e05a",
     "Jupyter Notebook": "#DA5B0B", "HTML": "#e34c26", "CSS": "#663399",
@@ -82,15 +86,9 @@ def shade(color: str, factor: float) -> str:
     return "#" + "".join(f"{max(0, min(255, round(c * factor))):02x}" for c in rgb)
 
 
-def calendar_green(position: float) -> str:
-    """Interpolate a solid green spectrum across the contribution calendar."""
-    scaled = max(0.0, min(1.0, position)) * (len(CALENDAR_GREENS) - 1)
-    index = min(len(CALENDAR_GREENS) - 2, int(scaled))
-    blend = scaled - index
-    left = [int(CALENDAR_GREENS[index][i:i + 2], 16) for i in (1, 3, 5)]
-    right = [int(CALENDAR_GREENS[index + 1][i:i + 2], 16) for i in (1, 3, 5)]
-    rgb = [round(a + (b - a) * blend) for a, b in zip(left, right)]
-    return "#" + "".join(f"{channel:02x}" for channel in rgb)
+def contribution_color(level: str) -> str:
+    """Use the reference project's night-green color for each GitHub level."""
+    return CONTRIBUTION_COLORS.get(level, CONTRIBUTION_COLORS["NONE"])
 
 
 def fetch_data() -> dict:
@@ -215,14 +213,9 @@ def draw_calendar(stats: dict, out: list[str]) -> None:
         base_y = offset_y + (week + day_offset) * dy
         count = day["contributionCount"]
         height = math.log10(count / 20.0 + 1) * 144.0 + 3.0
-        if count:
-            top_color = calendar_green(week / max(1, week_count - 1))
-            left_color = shade(top_color, .52)
-            right_color = shade(top_color, .76)
-        else:
-            top_color = "#30363d"
-            left_color = shade(top_color, .52)
-            right_color = shade(top_color, .76)
+        top_color = contribution_color(day.get("contributionLevel", "NONE"))
+        left_color = shade(top_color, .83666)
+        right_color = shade(top_color, .7)
 
         delay = min(1.5, index * .003)
         title = f'{day["date"]}: {count} contribution' + ("s" if count != 1 else "")
