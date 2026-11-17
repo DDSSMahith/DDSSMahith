@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Mahith</h1>
+  <h1>D D S S Mahith</h1>
   <p>AI &amp; ML Engineer specializing in Computer Vision, Full Stack Development, and workflow automation.</p>
   <p>
     <a href="https://ddssmahith.netlify.app"><img src="https://img.shields.io/badge/PORTFOLIO-161B22?style=flat-square&logo=vercel&logoColor=white" alt="Portfolio" /></a>
