@@ -170,9 +170,9 @@ def draw_calendar(stats: dict, out: list[str]) -> None:
             cells.append((col, row, day))
     cells.sort(key=lambda cell: (cell[0] + cell[1], cell[1]))
 
-    ox, oy, step = 22.0, 399.0, 12.15
+    ox, oy, step = 22.0, 86.0, 12.15
     for col, row, day in cells:
-        x, y = ox + step * (col + row), oy + step * (row - col) * 0.5
+        x, y = ox + step * (col + row), oy + step * (col - row) * 0.5
         top = [(x, y), (x + step, y - step * .5), (x + 2 * step, y), (x + step, y + step * .5)]
         level = day.get("contributionLevel", "NONE")
         base = LEVEL_COLORS.get(level, LEVEL_COLORS["NONE"])
@@ -203,7 +203,7 @@ def draw_radar(stats: dict, out: list[str]) -> None:
         ("Repo", stats["reposCreated"]),
     ]
     angles = [-math.pi / 2 + 2 * math.pi * i / len(axes) for i in range(len(axes))]
-    out.append(label(cx, 52, "ACTIVITY RADAR", size=11, color="#8b949e", anchor="middle", weight=600))
+    out.append(label(805, 76, "ACTIVITY RADAR", size=11, color="#8b949e", weight=600))
     for value in (10, 100, 1000, 10000):
         r = radius * math.log10(value) / 4
         points = [(cx + r * math.cos(a), cy + r * math.sin(a)) for a in angles]
@@ -225,8 +225,10 @@ def draw_radar(stats: dict, out: list[str]) -> None:
     out.append('<path d="M805 375H1070" stroke="#30363d" stroke-width="1"/>')
     out.append(label(805, 398, "CURRENT STREAK", size=9, color="#8b949e", weight=600))
     out.append(label(1070, 398, "LONGEST STREAK", size=9, color="#8b949e", anchor="end", weight=600))
-    out.append(label(805, 424, f'{stats["currentStreak"]} days', size=17, color="#e6edf3", weight=700))
-    out.append(label(1070, 424, f'{stats["longestStreak"]} days', size=17, color="#e6edf3", anchor="end", weight=700))
+    current_unit = "day" if stats["currentStreak"] == 1 else "days"
+    longest_unit = "day" if stats["longestStreak"] == 1 else "days"
+    out.append(label(805, 424, f'{stats["currentStreak"]} {current_unit}', size=17, color="#e6edf3", weight=700))
+    out.append(label(1070, 424, f'{stats["longestStreak"]} {longest_unit}', size=17, color="#e6edf3", anchor="end", weight=700))
     out.append(label(805, 451, f'ISSUES  {stats["issues"]:,}', size=10, color="#8b949e"))
     out.append(label(1070, 451, f'REVIEWS  {stats["reviews"]:,}', size=10, color="#8b949e", anchor="end"))
 
