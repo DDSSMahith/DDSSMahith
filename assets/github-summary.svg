@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="710" viewBox="0 0 900 710" role="img" aria-labelledby="title desc">
+<title id="title">Live GitHub stats for DDSSMahith</title>
+<desc id="desc">Current stars, yearly commits, pull requests, issues, contributed repositories, contribution streaks, and programming language breakdown.</desc>
+<rect width="900" height="710" fill="#010409"/>
+<style>text{font-family:Arial,Helvetica,sans-serif}</style>
+<rect x="20" y="16" width="860" height="220" rx="11" fill="#0b100d" stroke="#39443e" stroke-width="1.4"/>
+<text x="46.0" y="52.0" fill="#b6d900" font-family="Arial, sans-serif" font-size="19px" font-weight="700" text-anchor="start">DDSSMahith / GITHUB STATS</text>
+<text x="47.0" y="87.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="600" text-anchor="start">Total Stars Earned:</text>
+<text x="344.0" y="87.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="700" text-anchor="start">46</text>
+<text x="47.0" y="114.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="600" text-anchor="start">Total Commits (last year):</text>
+<text x="344.0" y="114.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="700" text-anchor="start">74</text>
+<text x="47.0" y="141.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="600" text-anchor="start">Total PRs (last year):</text>
+<text x="344.0" y="141.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="700" text-anchor="start">13</text>
+<text x="47.0" y="168.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="600" text-anchor="start">Total Issues (last year):</text>
+<text x="344.0" y="168.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="700" text-anchor="start">0</text>
+<text x="47.0" y="195.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="600" text-anchor="start">Repositories contributed to:</text>
+<text x="344.0" y="195.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="700" text-anchor="start">23</text>
+<circle cx="743" cy="133" r="48" fill="none" stroke="#263520" stroke-width="9"/>
+<circle cx="743" cy="133" r="48" fill="none" stroke="#b6d900" stroke-width="9" stroke-dasharray="171.0 130.6" transform="rotate(-90 743 133)"/>
+<text x="743.0" y="136.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="23px" font-weight="700" text-anchor="middle">207</text>
+<text x="743.0" y="153.0" fill="#8b9a91" font-family="Arial, sans-serif" font-size="8px" font-weight="600" text-anchor="middle">ACTIVE DAYS</text>
+<rect x="20" y="251" width="860" height="220" rx="11" fill="#0b100d" stroke="#39443e" stroke-width="1.4"/>
+<text x="46.0" y="283.0" fill="#b6d900" font-family="Arial, sans-serif" font-size="15px" font-weight="700" text-anchor="start">CONTRIBUTIONS &amp; STREAKS</text>
+<path d="M306 304V449M594 304V449" stroke="#59645d" stroke-width="1"/>
+<text x="163.0" y="350.0" fill="#b6d900" font-family="Arial, sans-serif" font-size="31px" font-weight="700" text-anchor="middle">887</text>
+<text x="163.0" y="377.0" fill="#b6d900" font-family="Arial, sans-serif" font-size="13px" font-weight="600" text-anchor="middle">Total Contributions</text>
+<text x="163.0" y="405.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="middle">2025-11-17 – 2026-11-17</text>
+<circle cx="450" cy="363" r="46" fill="none" stroke="#263520" stroke-width="7"/>
+<circle cx="450" cy="363" r="46" fill="none" stroke="#b6d900" stroke-width="7" stroke-dasharray="8.5 280.5" transform="rotate(-90 450 363)"/>
+<text x="450.0" y="371.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="28px" font-weight="700" text-anchor="middle">1</text>
+<text x="450.0" y="431.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="700" text-anchor="middle">Current Streak</text>
+<text x="450.0" y="450.0" fill="#8b9a91" font-family="Arial, sans-serif" font-size="10px" font-weight="400" text-anchor="middle">2026-11-17 – 2026-11-17</text>
+<text x="737.0" y="350.0" fill="#b6d900" font-family="Arial, sans-serif" font-size="31px" font-weight="700" text-anchor="middle">34</text>
+<text x="737.0" y="377.0" fill="#b6d900" font-family="Arial, sans-serif" font-size="13px" font-weight="600" text-anchor="middle">Longest Streak (days)</text>
+<text x="737.0" y="405.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="middle">2026-06-28 – 2026-07-31</text>
+<rect x="20" y="486" width="860" height="205" rx="11" fill="#0b100d" stroke="#39443e" stroke-width="1.4"/>
+<text x="46.0" y="520.0" fill="#b6d900" font-family="Arial, sans-serif" font-size="17px" font-weight="700" text-anchor="start">MOST USED LANGUAGES</text>
+<rect x="46.00" y="545.0" width="640.10" height="11" fill="#DA5B0B"/>
+<rect x="686.10" y="545.0" width="54.13" height="11" fill="#3178c6"/>
+<rect x="740.23" y="545.0" width="36.03" height="11" fill="#3572A5"/>
+<rect x="776.26" y="545.0" width="20.43" height="11" fill="#f1e05a"/>
+<rect x="796.69" y="545.0" width="16.39" height="11" fill="#222c37"/>
+<rect x="813.08" y="545.0" width="40.92" height="11" fill="#8b949e"/>
+<circle cx="49" cy="581" r="5" fill="#DA5B0B"/>
+<text x="62.0" y="585.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">Jupyter Notebook  79.22%</text>
+<circle cx="49" cy="609" r="5" fill="#3178c6"/>
+<text x="62.0" y="613.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">TypeScript  6.70%</text>
+<circle cx="49" cy="637" r="5" fill="#3572A5"/>
+<text x="62.0" y="641.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">Python  4.46%</text>
+<circle cx="443" cy="581" r="5" fill="#f1e05a"/>
+<text x="456.0" y="585.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">JavaScript  2.53%</text>
+<circle cx="443" cy="609" r="5" fill="#222c37"/>
+<text x="456.0" y="613.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">ShaderLab  2.03%</text>
+<circle cx="443" cy="637" r="5" fill="#8b949e"/>
+<text x="456.0" y="641.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="start">Other  5.06%</text>
+</svg>
