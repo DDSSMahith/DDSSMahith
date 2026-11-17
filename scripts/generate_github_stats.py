@@ -28,6 +28,7 @@ query($login: String!, $from: DateTime!, $to: DateTime!) {
       totalPullRequestContributions
       totalPullRequestReviewContributions
       totalRepositoryContributions
+      totalRepositoriesWithContributedCommits
       contributionCalendar {
         totalContributions
         weeks { contributionDays { date contributionCount contributionLevel } }
@@ -128,18 +129,28 @@ def summarize(user: dict) -> dict:
     days = [day for week in calendar["weeks"] for day in week["contributionDays"]]
     days.sort(key=lambda day: day["date"])
     counts = [day["contributionCount"] for day in days]
-    current_streak = 0
+    active_runs = []
+    active_run = []
+    for day in days:
+        if day["contributionCount"]:
+            active_run.append(day)
+        elif active_run:
+            active_runs.append(active_run)
+            active_run = []
+    if active_run:
+        active_runs.append(active_run)
+    longest_run = max(active_runs, key=len, default=[])
+    current_run = []
     today = dt.datetime.now(dt.timezone.utc).date()
     index = len(days) - 1
     if index >= 0 and days[index]["date"] == today.isoformat() and days[index]["contributionCount"] == 0:
         index -= 1
     while index >= 0 and days[index]["contributionCount"] > 0:
-        current_streak += 1
+        current_run.append(days[index])
         index -= 1
-    longest_streak = streak = 0
-    for count in counts:
-        streak = streak + 1 if count else 0
-        longest_streak = max(longest_streak, streak)
+    current_run.reverse()
+    if current_run and (today - dt.date.fromisoformat(current_run[-1]["date"])).days > 1:
+        current_run = []
 
     return {
         "login": user["login"],
@@ -151,13 +162,19 @@ def summarize(user: dict) -> dict:
         "pullRequests": collection["totalPullRequestContributions"],
         "reviews": collection["totalPullRequestReviewContributions"],
         "reposCreated": collection["totalRepositoryContributions"],
+        "reposContributedTo": collection["totalRepositoriesWithContributedCommits"],
         "repoCount": repositories["totalCount"],
         "stars": stars,
         "forks": forks,
         "followers": user["followers"]["totalCount"],
         "languages": sorted(languages.items(), key=lambda item: item[1]["size"], reverse=True),
-        "currentStreak": current_streak,
-        "longestStreak": longest_streak,
+        "activeDays": sum(1 for day in days if day["contributionCount"] > 0),
+        "currentStreak": len(current_run),
+        "currentStreakStart": current_run[0]["date"] if current_run else "—",
+        "currentStreakEnd": current_run[-1]["date"] if current_run else "—",
+        "longestStreak": len(longest_run),
+        "longestStreakStart": longest_run[0]["date"] if longest_run else "—",
+        "longestStreakEnd": longest_run[-1]["date"] if longest_run else "—",
         "updated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
     }
 
@@ -319,10 +336,102 @@ def render(stats: dict) -> str:
     return "\n".join(out) + "\n"
 
 
+def render_summary(stats: dict) -> str:
+    out = [
+        '<svg xmlns="http://www.w3.org/2000/svg" width="900" height="710" viewBox="0 0 900 710" role="img" aria-labelledby="title desc">',
+        '<title id="title">Live GitHub stats for DDSSMahith</title>',
+        '<desc id="desc">Current stars, yearly commits, pull requests, issues, contributed repositories, contribution streaks, and programming language breakdown.</desc>',
+        '<rect width="900" height="710" fill="#010409"/>',
+        '<style>text{font-family:Arial,Helvetica,sans-serif}</style>',
+    ]
+    panel = "#0b100d"
+    border = "#39443e"
+    title_color = "#b6d900"
+    value_color = "#59b78d"
+    muted = "#8b9a91"
+
+    # Account summary
+    out.append(f'<rect x="20" y="16" width="860" height="220" rx="11" fill="{panel}" stroke="{border}" stroke-width="1.4"/>')
+    out.append(label(46, 52, f'{stats["login"]} / GITHUB STATS', size=19, color=title_color, weight=700))
+    rows = [
+        ("Total Stars Earned", stats["stars"]),
+        ("Total Commits (last year)", stats["commits"]),
+        ("Total PRs (last year)", stats["pullRequests"]),
+        ("Total Issues (last year)", stats["issues"]),
+        ("Repositories contributed to", stats["reposContributedTo"]),
+    ]
+    for index, (name, value) in enumerate(rows):
+        y = 87 + index * 27
+        out.append(label(47, y, f"{name}:", size=13, color=value_color, weight=600))
+        out.append(label(344, y, f"{value:,}", size=13, color=value_color, weight=700))
+    cx, cy, radius = 743, 133, 48
+    circumference = 2 * math.pi * radius
+    active = min(stats["activeDays"] / 365, 1)
+    out.append(f'<circle cx="{cx}" cy="{cy}" r="{radius}" fill="none" stroke="#263520" stroke-width="9"/>')
+    out.append(f'<circle cx="{cx}" cy="{cy}" r="{radius}" fill="none" stroke="{title_color}" stroke-width="9" '
+               f'stroke-dasharray="{circumference * active:.1f} {circumference * (1-active):.1f}" transform="rotate(-90 {cx} {cy})"/>')
+    out.append(label(cx, cy + 3, f'{stats["activeDays"]}', size=23, color=value_color, anchor="middle", weight=700))
+    out.append(label(cx, cy + 20, "ACTIVE DAYS", size=8, color=muted, anchor="middle", weight=600))
+
+    # Contribution totals and streaks
+    out.append(f'<rect x="20" y="251" width="860" height="220" rx="11" fill="{panel}" stroke="{border}" stroke-width="1.4"/>')
+    out.append(label(46, 283, "CONTRIBUTIONS & STREAKS", size=15, color=title_color, weight=700))
+    out.append('<path d="M306 304V449M594 304V449" stroke="#59645d" stroke-width="1"/>')
+    centers = [163, 450, 737]
+    out.append(label(centers[0], 350, f'{stats["contributions"]:,}', size=31, color=title_color, anchor="middle", weight=700))
+    out.append(label(centers[0], 377, "Total Contributions", size=13, color=title_color, anchor="middle", weight=600))
+    out.append(label(centers[0], 405, f'{stats["days"][0]["date"]} – {stats["days"][-1]["date"]}', size=11, color=value_color, anchor="middle"))
+
+    ring_r, ring_c = 46, centers[1]
+    out.append(f'<circle cx="{ring_c}" cy="363" r="{ring_r}" fill="none" stroke="#263520" stroke-width="7"/>')
+    current_progress = min(stats["currentStreak"] / max(stats["longestStreak"], 1), 1)
+    out.append(f'<circle cx="{ring_c}" cy="363" r="{ring_r}" fill="none" stroke="{title_color}" stroke-width="7" '
+               f'stroke-dasharray="{2*math.pi*ring_r*current_progress:.1f} {2*math.pi*ring_r*(1-current_progress):.1f}" transform="rotate(-90 {ring_c} 363)"/>')
+    out.append(label(ring_c, 371, f'{stats["currentStreak"]}', size=28, color=value_color, anchor="middle", weight=700))
+    out.append(label(ring_c, 431, "Current Streak", size=13, color=value_color, anchor="middle", weight=700))
+    out.append(label(ring_c, 450, f'{stats["currentStreakStart"]} – {stats["currentStreakEnd"]}', size=10, color=muted, anchor="middle"))
+
+    out.append(label(centers[2], 350, f'{stats["longestStreak"]}', size=31, color=title_color, anchor="middle", weight=700))
+    out.append(label(centers[2], 377, "Longest Streak (days)", size=13, color=title_color, anchor="middle", weight=600))
+    out.append(label(centers[2], 405, f'{stats["longestStreakStart"]} – {stats["longestStreakEnd"]}', size=11, color=value_color, anchor="middle"))
+
+    # Language breakdown
+    out.append(f'<rect x="20" y="486" width="860" height="205" rx="11" fill="{panel}" stroke="{border}" stroke-width="1.4"/>')
+    out.append(label(46, 520, "MOST USED LANGUAGES", size=17, color=title_color, weight=700))
+    languages = stats["languages"]
+    total = sum(item["size"] for _, item in languages)
+    entries = [(name, item["size"], item["color"] or LANGUAGE_COLORS.get(name, "#8b949e")) for name, item in languages[:5]]
+    if len(languages) > 5:
+        entries.append(("Other", sum(item["size"] for _, item in languages[5:]), LANGUAGE_COLORS["Other"]))
+    if total:
+        bar_x, bar_y, bar_w = 46.0, 545.0, 808.0
+        cursor = bar_x
+        for name, size, color in entries:
+            width = bar_w * size / total
+            if not re.fullmatch(r"#[0-9a-fA-F]{6}", color):
+                color = LANGUAGE_COLORS.get(name, "#8b949e")
+            out.append(f'<rect x="{cursor:.2f}" y="{bar_y}" width="{width:.2f}" height="11" fill="{color}"/>')
+            cursor += width
+        for index, (name, size, color) in enumerate(entries):
+            column, row = divmod(index, 3)
+            x, y = 49 + column * 394, 585 + row * 28
+            if not re.fullmatch(r"#[0-9a-fA-F]{6}", color):
+                color = LANGUAGE_COLORS.get(name, "#8b949e")
+            percent = size / total * 100
+            display = name if len(name) <= 26 else name[:25] + "…"
+            out.append(f'<circle cx="{x}" cy="{y-4}" r="5" fill="{color}"/>')
+            out.append(label(x + 13, y, f"{display}  {percent:.2f}%", size=11, color=value_color))
+    else:
+        out.append(label(48, 582, "No public repository language data yet", size=12, color=muted))
+    out.append('</svg>')
+    return "\n".join(out) + "\n"
+
+
 def main() -> None:
     stats = summarize(fetch_data())
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(render(stats), encoding="utf-8")
+    Path("assets/github-summary.svg").write_text(render_summary(stats), encoding="utf-8")
     print(f"Updated {OUTPUT} for @{stats['login']} ({stats['contributions']:,} contributions, {stats['repoCount']} public repositories).")
 
 

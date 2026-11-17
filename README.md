@@ -34,6 +34,8 @@
 <!-- Generated from GitHub's contribution calendar, profile, and public repository languages. -->
 <div align="center">
   <img src="assets/github-activity.svg" alt="Animated 3D contribution calendar, contribution radar, repository language donut, and live GitHub stats" width="100%" />
+  <br />
+  <img src="assets/github-summary.svg" alt="Live GitHub stats, contribution streaks, and most-used languages" width="100%" />
 </div>
 
 <sub>Updates automatically every 6 hours. Chart motion plays when the SVG loads.</sub>
