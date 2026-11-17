@@ -11,9 +11,7 @@
 
 ## About Me
 
-- I work across **computer vision, machine learning, full-stack development, and automation**.
-- Currently studying **AI &amp; ML at Woxsen University** and building **VeriSight**, a media-verification tool.
-- Co-founder of **Omnicore Inc** and R&amp;D Head of the Woxsen Science Club.
+Hey, I’m Mahith — an AI &amp; ML student at Woxsen University who enjoys building things with code and exploring how technology works.
 
 ## Tech Stack
 
@@ -52,5 +50,3 @@
   <br />
   <img src="assets/github-summary.svg" alt="Live GitHub stats, contribution streaks, and most-used languages" width="100%" />
 </div>
-
-<sub>Updates automatically every 6 hours. Chart motion plays when the SVG loads.</sub>
