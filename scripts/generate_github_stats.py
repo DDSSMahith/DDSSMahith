@@ -187,52 +187,57 @@ def summarize(user: dict) -> dict:
 
 
 def draw_calendar(stats: dict, out: list[str]) -> None:
-    weeks = stats["calendar"]["weeks"]
-    cells = []
-    for col, week in enumerate(weeks):
-        for row, day in enumerate(week["contributionDays"]):
-            cells.append((col, row, day))
-    # In this projection screen depth follows col - row. Paint far cells first
-    # so nearer voxel faces cleanly occlude them instead of crossing through.
-    cells.sort(key=lambda cell: (cell[0] - cell[1], cell[0] + cell[1]))
+    days = stats["days"]
+    if not days:
+        return
 
-    ox, oy, step = 22.0, 86.0, 12.15
-    # Paint the whole floor first. Drawing each floor tile between its
-    # neighboring columns caused later tiles to cut across and visually
-    # fragment the bars.
-    for col, row, day in cells:
-        x, y = ox + step * (col + row), oy + step * (col - row) * 0.5
-        top = [(x, y), (x + step, y - step * .5), (x + 2 * step, y), (x + step, y + step * .5)]
-        out.append(f'<polygon points="{polygon(top)}" fill="#262b31" stroke="#06090c" stroke-width=".65"/>')
+    # Port of the reference project's isometric projection: cells advance
+    # diagonally by week and weekday, and each voxel is three transformed
+    # rectangles. Chronological SVG order gives correct back-to-front overlap.
+    dx = 760.0 / 64.0
+    dy = dx * math.tan(math.radians(30))
+    face = dx * .9
+    face_depth = dy * .9
+    first_date = dt.date.fromisoformat(days[0]["date"])
+    first_weekday = (first_date.weekday() + 1) % 7  # Sunday = 0
+    week_count = math.ceil((len(days) + first_weekday) / 7.0)
+    offset_x = dx * 7
+    offset_y = 455.0 - (week_count + 7) * dy
+    scale_left = math.sqrt(face * face + face_depth * face_depth) / face
+    scale_right = scale_left
+    top_skew_x = math.degrees(math.atan(face / 2 / face_depth))
 
-    last_col = max((col for col, _, _ in cells), default=1)
-    for col, row, day in cells:
+    for index, day in enumerate(days):
+        date = dt.date.fromisoformat(day["date"])
+        day_offset = (date.weekday() + 1) % 7
+        week = (index + first_weekday) // 7
+        base_x = offset_x + (week - day_offset) * dx
+        base_y = offset_y + (week + day_offset) * dy
         count = day["contributionCount"]
-        if not count:
-            continue
-        base = calendar_green(col / max(1, last_col))
-        x, y = ox + step * (col + row), oy + step * (col - row) * 0.5
-        # Center each voxel over its calendar tile and inset it slightly. The
-        # exposed floor between columns keeps dense periods from reading as a
-        # single wall of interlocking faces.
-        size = step * .88
-        center_x, center_y = x + step, y
-        top = [(center_x - size, center_y), (center_x, center_y - size * .5),
-               (center_x + size, center_y), (center_x, center_y + size * .5)]
-        height = min(38.0, 4.0 + math.log2(count + 1) * 4.7)
-        raised = [(px, py - height) for px, py in top]
-        left = [top[3], top[0], raised[0], raised[3]]
-        right = [top[0], top[1], raised[1], raised[0]]
-        delay = ((col * 7 + row) % 72) * .012
+        height = math.log10(count / 20.0 + 1) * 144.0 + 3.0
+        if count:
+            top_color = calendar_green(week / max(1, week_count - 1))
+            left_color = shade(top_color, .52)
+            right_color = shade(top_color, .76)
+        else:
+            top_color = "#30363d"
+            left_color = shade(top_color, .52)
+            right_color = shade(top_color, .76)
+
+        delay = min(1.5, index * .003)
         title = f'{day["date"]}: {count} contribution' + ("s" if count != 1 else "")
-        out.append(f'<g><title>{esc(title)}</title>'
-                   f'<animateTransform attributeName="transform" type="translate" values="0 5;0 0" '
-                   f'dur=".52s" begin="{delay:.2f}s" calcMode="spline" '
-                   f'keySplines=".2 .7 .2 1" fill="freeze"/>'
-                   f'<polygon points="{polygon(left)}" fill="{shade(base, .52)}" stroke="#062418" stroke-width=".55"/>'
-                   f'<polygon points="{polygon(right)}" fill="{shade(base, .76)}" stroke="#062418" stroke-width=".55"/>'
-                   f'<polygon points="{polygon(raised)}" fill="{base}" stroke="#062418" stroke-width=".7"/>'
-                   f'</g>')
+        animation = (f'<animateTransform attributeName="transform" type="translate" '
+                     f'values="{base_x:.2f} {base_y - 3:.2f};{base_x:.2f} {base_y - height:.2f}" '
+                     f'dur="1.4s" begin="{delay:.3f}s" fill="freeze"/>') if count else ""
+        out.append(f'<g transform="translate({base_x:.2f} {base_y - height:.2f})">'
+                   f'<title>{esc(title)}</title>{animation}'
+                   f'<rect x="0" y="0" width="{face:.2f}" height="{face:.2f}" fill="{top_color}" '
+                   f'transform="skewY(-30) skewX({top_skew_x:.2f}) scale(1 {2 * face_depth / face:.4f})"/>'
+                   f'<rect x="0" y="0" width="{face:.2f}" height="{height / scale_left:.2f}" fill="{left_color}" '
+                   f'transform="skewY(30) scale(1 {scale_left:.4f})"/>'
+                   f'<rect x="0" y="0" width="{face:.2f}" height="{height / scale_right:.2f}" fill="{right_color}" '
+                   f'transform="translate({face:.2f} {face_depth:.2f}) skewY(-30) '
+                   f'scale(1 {scale_right:.4f})"/></g>')
 
 
 def draw_radar(stats: dict, out: list[str]) -> None:
