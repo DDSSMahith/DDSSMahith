@@ -49,13 +49,9 @@ query($login: String!, $from: DateTime!, $to: DateTime!) {
 """
 
 WIDTH, HEIGHT = 1100, 650
-LEVEL_COLORS = {
-    "NONE": "#30363d",
-    "FIRST_QUARTILE": "#0e4429",
-    "SECOND_QUARTILE": "#006d32",
-    "THIRD_QUARTILE": "#26a641",
-    "FOURTH_QUARTILE": "#39d353",
-}
+# A restrained green spectrum gives the calendar a continuous RGB-style sweep
+# while keeping every contribution column in the same color family.
+CALENDAR_GREENS = ("#064e3b", "#047857", "#059669", "#10b981", "#22c55e", "#4ade80", "#86efac")
 LANGUAGE_COLORS = {
     "Python": "#3572A5", "TypeScript": "#3178c6", "JavaScript": "#f1e05a",
     "Jupyter Notebook": "#DA5B0B", "HTML": "#e34c26", "CSS": "#663399",
@@ -84,6 +80,17 @@ def shade(color: str, factor: float) -> str:
         return "#39d353"
     rgb = [int(color[i:i + 2], 16) for i in (1, 3, 5)]
     return "#" + "".join(f"{max(0, min(255, round(c * factor))):02x}" for c in rgb)
+
+
+def calendar_green(position: float) -> str:
+    """Interpolate a solid green spectrum across the contribution calendar."""
+    scaled = max(0.0, min(1.0, position)) * (len(CALENDAR_GREENS) - 1)
+    index = min(len(CALENDAR_GREENS) - 2, int(scaled))
+    blend = scaled - index
+    left = [int(CALENDAR_GREENS[index][i:i + 2], 16) for i in (1, 3, 5)]
+    right = [int(CALENDAR_GREENS[index + 1][i:i + 2], 16) for i in (1, 3, 5)]
+    rgb = [round(a + (b - a) * blend) for a, b in zip(left, right)]
+    return "#" + "".join(f"{channel:02x}" for channel in rgb)
 
 
 def fetch_data() -> dict:
@@ -188,15 +195,22 @@ def draw_calendar(stats: dict, out: list[str]) -> None:
     cells.sort(key=lambda cell: (cell[0] + cell[1], cell[1]))
 
     ox, oy, step = 22.0, 86.0, 12.15
+    # Paint the whole floor first. Drawing each floor tile between its
+    # neighboring columns caused later tiles to cut across and visually
+    # fragment the bars.
     for col, row, day in cells:
         x, y = ox + step * (col + row), oy + step * (col - row) * 0.5
         top = [(x, y), (x + step, y - step * .5), (x + 2 * step, y), (x + step, y + step * .5)]
-        level = day.get("contributionLevel", "NONE")
-        base = LEVEL_COLORS.get(level, LEVEL_COLORS["NONE"])
         out.append(f'<polygon points="{polygon(top)}" fill="#262b31" stroke="#06090c" stroke-width=".65"/>')
+
+    last_col = max((col for col, _, _ in cells), default=1)
+    for col, row, day in cells:
         count = day["contributionCount"]
         if not count:
             continue
+        base = calendar_green(col / max(1, last_col))
+        x, y = ox + step * (col + row), oy + step * (col - row) * 0.5
+        top = [(x, y), (x + step, y - step * .5), (x + 2 * step, y), (x + step, y + step * .5)]
         height = min(50.0, 7.0 + math.log2(count + 1) * 6.2)
         raised = [(px, py - height) for px, py in top]
         left = [top[3], top[0], raised[0], raised[3]]
@@ -204,11 +218,12 @@ def draw_calendar(stats: dict, out: list[str]) -> None:
         delay = ((col * 7 + row) % 72) * .012
         title = f'{day["date"]}: {count} contribution' + ("s" if count != 1 else "")
         out.append(f'<g><title>{esc(title)}</title>'
-                   f'<animateTransform attributeName="transform" type="translate" values="0 2;0 0" '
-                   f'dur=".38s" begin="{delay:.2f}s" fill="freeze"/>'
-                   f'<polygon points="{polygon(left)}" fill="{shade(base, .58)}"/>'
-                   f'<polygon points="{polygon(right)}" fill="{shade(base, .76)}"/>'
-                   f'<polygon points="{polygon(raised)}" fill="{base}" stroke="#7ee787" stroke-opacity=".17" stroke-width=".5"/>'
+                   f'<animateTransform attributeName="transform" type="translate" values="0 5;0 0" '
+                   f'dur=".52s" begin="{delay:.2f}s" calcMode="spline" '
+                   f'keySplines=".2 .7 .2 1" fill="freeze"/>'
+                   f'<polygon points="{polygon(left)}" fill="{shade(base, .40)}" stroke="#062418" stroke-width=".55"/>'
+                   f'<polygon points="{polygon(right)}" fill="{shade(base, .64)}" stroke="#062418" stroke-width=".55"/>'
+                   f'<polygon points="{polygon(raised)}" fill="{base}" stroke="#062418" stroke-width=".7"/>'
                    f'</g>')
 
 
