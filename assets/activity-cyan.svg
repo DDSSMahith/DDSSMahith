@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="610" viewBox="0 0 1200 610" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Mahith — signal atlas</title>
+  <desc id="desc">A futuristic cyan dashboard with a decorative isometric activity terrain, an illustrative capability radar, and a conceptual technology focus donut. Charts are visual artwork, not live GitHub statistics.</desc>
+  <defs>
+    <linearGradient id="bg" x1="40" y1="24" x2="1150" y2="604" gradientUnits="userSpaceOnUse"><stop stop-color="#0B1420"/><stop offset=".55" stop-color="#080F19"/><stop offset="1" stop-color="#07111B"/></linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101E2C" stop-opacity=".9"/><stop offset="1" stop-color="#0B1520" stop-opacity=".75"/></linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8AFAFF"/><stop offset=".5" stop-color="#29E6FF"/><stop offset="1" stop-color="#00A8D5"/></linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#D6C6FF"/><stop offset="1" stop-color="#8D72F9"/></linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#A6FFE2"/><stop offset="1" stop-color="#38D8A5"/></linearGradient>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#19384B"/><stop offset="1" stop-color="#102536"/></linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#53F5FF"/><stop offset="1" stop-color="#087BA7"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#00CFFF" stop-opacity=".2"/><stop offset="1" stop-color="#00CFFF" stop-opacity="0"/></radialGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#88DDF2" fill-opacity=".12"/></pattern>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feGaussianBlur stdDeviation="13"/></filter>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"/></filter>
+    <clipPath id="clip"><rect x="1" y="1" width="1198" height="608" rx="24"/></clipPath>
+    <clipPath id="terrain"><rect x="47" y="207" width="670" height="320" rx="7"/></clipPath>
+    <g id="cube"><path d="M0 7 10 1l10 6-10 6L0 7Z" fill="#48F0FF"/><path d="M0 7 10 13v12L0 19V7Z" fill="#167B9B"/><path d="m10 13 10-6v12l-10 6V13Z" fill="#239FBD"/></g>
+    <g id="cubeLow"><path d="M0 7 10 1l10 6-10 6L0 7Z" fill="#194558"/><path d="M0 7 10 13v7L0 14V7Z" fill="#102A3B"/><path d="m10 13 10-6v7l-10 6v-7Z" fill="#14374A"/></g>
+  </defs>
+  <g clip-path="url(#clip)">
+    <rect width="1200" height="610" rx="24" fill="url(#bg)"/><rect width="1200" height="610" fill="url(#dots)"/>
+    <ellipse cx="340" cy="310" rx="470" ry="320" fill="url(#glow)"/>
+    <rect x="1" y="1" width="1198" height="608" rx="24" stroke="#62EFFF" stroke-opacity=".45" stroke-width="2"/>
+    <path d="M26 116h1148" stroke="#74DAF5" stroke-opacity=".16"/>
+    <path d="M27 28h32M27 28v32M1173 28h-32M1173 28v32M27 582h32M27 582v-32M1173 582h-32M1173 582v-32" stroke="#56EFFF" stroke-opacity=".48" stroke-width="2"/>
+    <circle cx="43" cy="46" r="4" fill="#54F6FF"/><circle cx="43" cy="46" r="8" stroke="#54F6FF" stroke-opacity=".28"/>
+    <text x="64" y="48" fill="#68F4FF" font-family="Segoe UI,Arial,sans-serif" font-size="11" letter-spacing="3.2">SIGNAL ATLAS <tspan fill="#829EB3">/ 001</tspan></text>
+    <text x="64" y="91" fill="#E6F3FC" font-family="Segoe UI,Arial,sans-serif" font-size="34" font-weight="650" letter-spacing=".2">MAHITH</text>
+    <text x="244" y="89" fill="#99B5C9" font-family="Segoe UI,Arial,sans-serif" font-size="13" letter-spacing="2.4">AI  /  MACHINE LEARNING  /  PRODUCT ENGINEERING</text>
+    <rect x="914" y="37" width="238" height="42" rx="8" fill="#10202C" stroke="#35DAF0" stroke-opacity=".3"/>
+    <circle cx="932" cy="58" r="4" fill="#56EDC3"/><text x="946" y="62" fill="#B6CEDD" font-family="Consolas,monospace" font-size="11" letter-spacing="1">ILLUSTRATIVE DATA VIZ</text>
+
+    <!-- Isometric activity terrain -->
+    <rect x="35" y="141" width="695" height="416" rx="14" fill="url(#panel)" stroke="#67DDED" stroke-opacity=".17"/>
+    <path d="M53 178h34" stroke="#5FEFFF" stroke-width="2"/><text x="97" y="182" fill="#D8EFF7" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" letter-spacing="1.3">CONTRIBUTION TERRAIN</text>
+    <text x="53" y="203" fill="#7596A9" font-family="Consolas,monospace" font-size="10" letter-spacing="1">ISOMETRIC RENDER  ·  DECORATIVE PREVIEW</text>
+    <rect x="492" y="160" width="216" height="25" rx="12" fill="#0D2C3A" stroke="#2E8295" stroke-opacity=".6"/><circle cx="506" cy="172.5" r="3" fill="#56EDC3"/><text x="516" y="176" fill="#8EB6C4" font-family="Consolas,monospace" font-size="9" letter-spacing=".7">NOT LIVE GITHUB ACTIVITY</text>
+    <g clip-path="url(#terrain)">
+    <ellipse cx="380" cy="397" rx="255" ry="103" fill="#00CFFF" fill-opacity=".08" filter="url(#shadow)"/>
+    <!-- A receding rhombus lattice gives the contribution field its isometric base. -->
+    <path d="M120 345 304 240 667 450 483 555Z" fill="#0D1C29" fill-opacity=".54" stroke="#89DFF0" stroke-opacity=".3" stroke-width="1"/>
+    <g stroke="#89DFF0" stroke-opacity=".18" stroke-width=".8">
+      <path d="M156 366 340 261M193 387 377 282M229 408 413 303M265 429 449 324M302 450 486 345M338 471 522 366M374 492 558 387M410 513 594 408M447 534 631 429"/>
+      <path d="M138 355 501 565M157 345 520 555M175 334 538 544M193 324 556 534M212 313 575 523M230 303 593 513M249 292 612 502M267 282 630 492M286 271 649 481M304 261 667 471"/>
+    </g>
+    <!-- dormant grid cells -->
+    <g opacity=".5">
+      <use href="#cubeLow" x="162" y="334"/><use href="#cubeLow" x="218" y="313"/><use href="#cubeLow" x="281" y="342"/><use href="#cubeLow" x="337" y="309"/><use href="#cubeLow" x="395" y="350"/><use href="#cubeLow" x="451" y="326"/><use href="#cubeLow" x="510" y="383"/><use href="#cubeLow" x="562" y="388"/><use href="#cubeLow" x="597" y="433"/>
+      <use href="#cubeLow" x="196" y="369"/><use href="#cubeLow" x="252" y="350"/><use href="#cubeLow" x="311" y="381"/><use href="#cubeLow" x="367" y="361"/><use href="#cubeLow" x="425" y="394"/><use href="#cubeLow" x="481" y="373"/><use href="#cubeLow" x="535" y="426"/><use href="#cubeLow" x="579" y="456"/>
+    </g>
+    <!-- signal columns -->
+    <g opacity=".45" filter="url(#soft)"><use href="#cube" x="294" y="342"/><use href="#cube" x="424" y="394"/><use href="#cube" x="506" y="382"/><use href="#cube" x="539" y="424"/><use href="#cube" x="562" y="388"/></g>
+    <g><use href="#cube" x="119" y="357"/><use href="#cube" x="174" y="320"/><use href="#cube" x="230" y="347"/><use href="#cube" x="274" y="331"/><use href="#cube" x="308" y="370"/><use href="#cube" x="362" y="343"/><use href="#cube" x="400" y="382"/><use href="#cube" x="440" y="369"/><use href="#cube" x="482" y="359"/><use href="#cube" x="528" y="400"/><use href="#cube" x="584" y="420"/>
+      <use href="#cube" x="194" y="356"/><use href="#cube" x="330" y="353"/><use href="#cube" x="462" y="346"/><use href="#cube" x="551" y="368"/></g>
+    <g opacity=".78"><use href="#cube" x="292" y="328"/><use href="#cube" x="423" y="381"/><use href="#cube" x="504" y="369"/><use href="#cube" x="536" y="411"/></g>
+    </g>
+    <text x="60" y="535" fill="#91AEBE" font-family="Consolas,monospace" font-size="10" letter-spacing="1">MODEL  <tspan fill="#D8F2F8">ACTIVITY SHAPE STUDY</tspan></text>
+    <path d="M495 530h206" stroke="#56EFFF" stroke-opacity=".18"/><circle cx="504" cy="543" r="3" fill="#2D879E"/><circle cx="518" cy="543" r="3" fill="#49B8D0"/><circle cx="532" cy="543" r="3" fill="#65EEFF"/><text x="543" y="547" fill="#769BAC" font-family="Consolas,monospace" font-size="9">LOW  ·  MID  ·  HIGH</text>
+
+    <!-- capability radar -->
+    <rect x="747" y="141" width="419" height="242" rx="14" fill="url(#panel)" stroke="#67DDED" stroke-opacity=".17"/>
+    <path d="M765 178h27" stroke="#A58BFF" stroke-width="2"/><text x="802" y="182" fill="#D8EFF7" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" letter-spacing="1.2">CAPABILITY RADAR</text>
+    <text x="765" y="202" fill="#7596A9" font-family="Consolas,monospace" font-size="9" letter-spacing=".8">ILLUSTRATIVE PROFILE  ·  NOT A MEASURED SCORE</text>
+    <g transform="translate(960 286)">
+      <path d="M0-76 72.4-23.5 44.7 61.5-44.7 61.5-72.4-23.5Z" stroke="#6E92A7" stroke-opacity=".38" stroke-dasharray="3 5"/>
+      <path d="M0-57 54.3-17.6 33.5 46.1-33.5 46.1-54.3-17.6Z" stroke="#6E92A7" stroke-opacity=".34" stroke-dasharray="3 5"/>
+      <path d="M0-38 36.2-11.8 22.4 30.8-22.4 30.8-36.2-11.8Z" stroke="#6E92A7" stroke-opacity=".31" stroke-dasharray="3 5"/>
+      <path d="M0-19 18.1-5.9 11.2 15.4-11.2 15.4-18.1-5.9Z" stroke="#6E92A7" stroke-opacity=".28" stroke-dasharray="3 5"/>
+      <path d="M0-76V0M72.4-23.5 0 0M44.7 61.5 0 0M-44.7 61.5 0 0M-72.4-23.5 0 0" stroke="#88A5B6" stroke-opacity=".25"/>
+      <path d="M0-58 55-17.9 31 43-20 28-53-17.2Z" fill="#33E6FF" fill-opacity=".22" stroke="#58F2FF" stroke-width="2"/>
+      <g fill="#B4FFFF" stroke="#123241" stroke-width="2"><circle cy="-58" r="4"/><circle cx="55" cy="-17.9" r="4"/><circle cx="31" cy="43" r="4"/><circle cx="-20" cy="28" r="4"/><circle cx="-53" cy="-17.2" r="4"/></g>
+      <text x="0" y="-91" text-anchor="middle" fill="#BFD3DF" font-family="Consolas,monospace" font-size="9">ML</text><text x="84" y="-23" fill="#BFD3DF" font-family="Consolas,monospace" font-size="9">VISION</text><text x="51" y="78" fill="#BFD3DF" font-family="Consolas,monospace" font-size="9">WEB</text><text x="-65" y="78" fill="#BFD3DF" font-family="Consolas,monospace" font-size="9">AUTOMATION</text><text x="-119" y="-23" fill="#BFD3DF" font-family="Consolas,monospace" font-size="9">DATA</text>
+    </g>
+
+    <!-- technology focus donut -->
+    <rect x="747" y="397" width="419" height="160" rx="14" fill="url(#panel)" stroke="#67DDED" stroke-opacity=".17"/>
+    <path d="M765 434h27" stroke="#39DCAC" stroke-width="2"/><text x="802" y="438" fill="#D8EFF7" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" letter-spacing="1.2">TECHNOLOGY FOCUS</text>
+    <text x="765" y="458" fill="#7596A9" font-family="Consolas,monospace" font-size="9" letter-spacing=".8">CONCEPT MAP  ·  NO PERCENTAGES IMPLIED</text>
+    <circle cx="836" cy="511" r="38" stroke="#152A38" stroke-width="11"/>
+    <circle cx="836" cy="511" r="38" stroke="#35E4FF" stroke-width="11" stroke-dasharray="67 172" stroke-dashoffset="0" transform="rotate(-90 836 511)"/>
+    <circle cx="836" cy="511" r="38" stroke="#A28AFF" stroke-width="11" stroke-dasharray="46 193" stroke-dashoffset="-71" transform="rotate(-90 836 511)"/>
+    <circle cx="836" cy="511" r="38" stroke="#49E0AC" stroke-width="11" stroke-dasharray="42 197" stroke-dashoffset="-121" transform="rotate(-90 836 511)"/>
+    <circle cx="836" cy="511" r="38" stroke="#F1C877" stroke-width="11" stroke-dasharray="27 212" stroke-dashoffset="-167" transform="rotate(-90 836 511)"/>
+    <text x="836" y="509" text-anchor="middle" fill="#EAF9FD" font-family="Consolas,monospace" font-size="10">STACK</text><text x="836" y="522" text-anchor="middle" fill="#77B8CA" font-family="Consolas,monospace" font-size="8">MAP</text>
+    <g font-family="Segoe UI,Arial,sans-serif" font-size="10.5" fill="#AAC1CF">
+      <circle cx="911" cy="488" r="4" fill="#35E4FF"/><text x="923" y="492">AI / MACHINE LEARNING</text><circle cx="1054" cy="488" r="4" fill="#A28AFF"/><text x="1066" y="492">VISION</text>
+      <circle cx="911" cy="514" r="4" fill="#49E0AC"/><text x="923" y="518">FULL-STACK</text><circle cx="1054" cy="514" r="4" fill="#F1C877"/><text x="1066" y="518">AUTOMATION</text>
+      <circle cx="911" cy="540" r="4" fill="#476475"/><text x="923" y="544">DATA / CLOUD / TOOLS</text>
+    </g>
+
+    <path d="M38 578h1124" stroke="#6CCADB" stroke-opacity=".18"/>
+    <text x="45" y="594" fill="#7698AA" font-family="Consolas,monospace" font-size="9" letter-spacing=".7">DESIGNED FOR THE PROFILE README  <tspan fill="#2C596B">/</tspan>  CUSTOM SVG  <tspan fill="#2C596B">/</tspan>  CYAN SIGNAL SERIES</text>
+    <text x="1154" y="594" text-anchor="end" fill="#66899C" font-family="Consolas,monospace" font-size="9">DDSSMAHITH</text>
+  </g>
+</svg>
