@@ -187,8 +187,8 @@ def draw_calendar(stats: dict, out: list[str]) -> None:
         delay = ((col * 7 + row) % 72) * .012
         title = f'{day["date"]}: {count} contribution' + ("s" if count != 1 else "")
         out.append(f'<g><title>{esc(title)}</title>'
-                   f'<animateTransform attributeName="transform" type="translate" values="0 {height:.1f};0 0" '
-                   f'dur=".55s" begin="{delay:.2f}s" fill="freeze"/>'
+                   f'<animateTransform attributeName="transform" type="translate" values="0 2;0 0" '
+                   f'dur=".38s" begin="{delay:.2f}s" fill="freeze"/>'
                    f'<polygon points="{polygon(left)}" fill="{shade(base, .58)}"/>'
                    f'<polygon points="{polygon(right)}" fill="{shade(base, .76)}"/>'
                    f'<polygon points="{polygon(raised)}" fill="{base}" stroke="#7ee787" stroke-opacity=".17" stroke-width=".5"/>'
