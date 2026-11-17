@@ -414,14 +414,14 @@ def render_summary(stats: dict) -> str:
     out.append(label(centers[0], 405, f'{stats["days"][0]["date"]} – {stats["days"][-1]["date"]}', size=11, color=value_color, anchor="middle"))
 
     ring_r, ring_c = 46, centers[1]
-    out.append(f'<circle cx="{ring_c}" cy="363" r="{ring_r}" fill="none" stroke="#263520" stroke-width="7"/>')
-    out.append(f'<g transform="translate({ring_c - 12} 291)" fill="{title_color}"><title>Current streak flame</title>'
-               '<path d="M12 1C13.5 5 11.5 7 10 9.5 8.7 8.3 8 6.8 8.2 5 5.2 7.7 4 10.4 4 13.4 4 18.7 7.6 22 12 22 16.8 22 20 18.1 20 13.6 20 8.5 17.1 4.4 12 1Z"/>'
-               f'<path d="M12 19c-2.2 0-3.6-1.5-3.6-3.5 0-1.2.7-2.4 1.9-3.5.2 1.7 1.3 2.1 1.8 2.5.7-.9 1.6-1.7 1.7-3.3 1.2 1.2 2.2 2.6 2.2 4.2 0 2.1-1.7 3.6-4 3.6Z" fill="{panel}"/>'
-               '<animate attributeName="opacity" values=".72;1;.86;.72" dur="1.2s" repeatCount="indefinite"/></g>')
-    current_progress = min(stats["currentStreak"] / max(stats["longestStreak"], 1), 1)
+    ring_circumference = 2 * math.pi * ring_r
+    flame_gap = 18
     out.append(f'<circle cx="{ring_c}" cy="363" r="{ring_r}" fill="none" stroke="{title_color}" stroke-width="7" '
-               f'stroke-dasharray="{2*math.pi*ring_r*current_progress:.1f} {2*math.pi*ring_r*(1-current_progress):.1f}" transform="rotate(-90 {ring_c} 363)"/>')
+               f'stroke-dasharray="{ring_circumference - flame_gap:.1f} {flame_gap}" transform="rotate(-90 {ring_c} 363)"/>')
+    out.append(f'<g transform="translate({ring_c - 12} 294)" fill="{panel}" stroke="{title_color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><title>Current streak flame</title>'
+               '<path d="M12 2C11 6 8 8 8 12 7 11 6 9 7 7 4 10 4 12 4 14 4 18.4 7.6 22 12 22S20 18.4 20 14C20 9 17 5 12 2Z"/>'
+               f'<path d="M12 18c-2 0-3.3-1.4-3.3-3.2 0-1.2.7-2.2 1.8-3.2.2 1.5 1.2 1.9 1.7 2.3.7-.8 1.4-1.6 1.5-3 1.1 1.1 1.9 2.4 1.9 3.8 0 1.9-1.5 3.3-3.6 3.3Z" fill="{title_color}" stroke="none"/>'
+               '<animate attributeName="opacity" values=".88;1;.92;.88" dur="1.2s" repeatCount="indefinite"/></g>')
     out.append(label(ring_c, 371, f'{stats["currentStreak"]}', size=28, color=value_color, anchor="middle", weight=700))
     out.append(label(ring_c, 431, "Current Streak", size=13, color=value_color, anchor="middle", weight=700))
     out.append(label(ring_c, 450, f'{stats["currentStreakStart"]} – {stats["currentStreakEnd"]}', size=10, color=muted, anchor="middle"))
