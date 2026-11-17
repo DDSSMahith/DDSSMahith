@@ -21,14 +21,13 @@
 
 ## Tech Stack
 
-**AI &amp; Vision**  
-![Python](https://img.shields.io/badge/Python-161B22?style=flat-square&logo=python) ![PyTorch](https://img.shields.io/badge/PyTorch-161B22?style=flat-square&logo=pytorch) ![TensorFlow](https://img.shields.io/badge/TensorFlow-161B22?style=flat-square&logo=tensorflow) ![OpenCV](https://img.shields.io/badge/OpenCV-161B22?style=flat-square&logo=opencv) ![scikit--learn](https://img.shields.io/badge/scikit--learn-161B22?style=flat-square&logo=scikitlearn)
-
-**Web &amp; APIs**  
-![TypeScript](https://img.shields.io/badge/TypeScript-161B22?style=flat-square&logo=typescript) ![React](https://img.shields.io/badge/React-161B22?style=flat-square&logo=react) ![Next.js](https://img.shields.io/badge/Next.js-161B22?style=flat-square&logo=nextdotjs) ![Node.js](https://img.shields.io/badge/Node.js-161B22?style=flat-square&logo=nodedotjs) ![FastAPI](https://img.shields.io/badge/FastAPI-161B22?style=flat-square&logo=fastapi)
-
-**Data &amp; Tools**  
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-161B22?style=flat-square&logo=postgresql) ![Docker](https://img.shields.io/badge/Docker-161B22?style=flat-square&logo=docker) ![AWS](https://img.shields.io/badge/AWS-161B22?style=flat-square&logo=amazonwebservices) ![n8n](https://img.shields.io/badge/n8n-161B22?style=flat-square&logo=n8n) ![Git](https://img.shields.io/badge/Git-161B22?style=flat-square&logo=git)
+- **AI &amp; LLM engineering** · LLM API integration, RAG, LangChain, AI automation, model evaluation
+- **Machine learning &amp; data science** · Scikit-learn, Pandas, TensorFlow, Keras, PyTorch, neural networks, CNNs, time-series analysis, predictive modeling, model optimization, Matplotlib, data visualization
+- **Computer vision** · OpenCV, facial recognition, image classification, deepfake and media analysis
+- **Programming languages** · Python, JavaScript, TypeScript, Java, SQL, C#
+- **Web &amp; backend** · React.js, Next.js, Node.js, Express.js, FastAPI, REST APIs, HTML5, CSS3
+- **Databases &amp; cloud** · PostgreSQL, MySQL, MongoDB, AWS, Docker, Vercel
+- **Automation &amp; tools** · n8n, Make.io, Apify, Git, GitHub, Unity
 
 ## GitHub Stats
 
