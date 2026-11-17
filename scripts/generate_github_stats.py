@@ -363,7 +363,8 @@ def render_summary(stats: dict) -> str:
         '<title id="title">Live GitHub stats for DDSSMahith</title>',
         '<desc id="desc">Current stars, yearly commits, pull requests, issues, contributed repositories, contribution streaks, and programming language breakdown.</desc>',
         '<rect width="900" height="710" fill="#010409"/>',
-        '<style>text{font-family:Arial,Helvetica,sans-serif}@media(prefers-reduced-motion:reduce){animate,animateTransform{display:none}}</style>',
+        '<style>text{font-family:Arial,Helvetica,sans-serif}@keyframes currstreak{0%{font-size:3px;opacity:.2}80%{font-size:34px;opacity:1}100%{font-size:28px;opacity:1}}@keyframes fadein{0%{opacity:0}100%{opacity:1}}@media(prefers-reduced-motion:reduce){animate,animateTransform{display:none}}</style>',
+        '<defs><mask id="mask_out_ring_behind_fire" maskUnits="userSpaceOnUse"><rect width="900" height="710" fill="white"/><ellipse cx="450" cy="318" rx="15" ry="21" fill="black"/></mask></defs>',
     ]
     panel = "#0b100d"
     border = "#39443e"
@@ -414,15 +415,11 @@ def render_summary(stats: dict) -> str:
     out.append(label(centers[0], 405, f'{stats["days"][0]["date"]} – {stats["days"][-1]["date"]}', size=11, color=value_color, anchor="middle"))
 
     ring_r, ring_c = 46, centers[1]
-    ring_circumference = 2 * math.pi * ring_r
-    flame_gap = 18
-    out.append(f'<circle cx="{ring_c}" cy="363" r="{ring_r}" fill="none" stroke="{title_color}" stroke-width="7" '
-               f'stroke-dasharray="{ring_circumference - flame_gap:.1f} {flame_gap}" transform="rotate(-90 {ring_c} 363)"/>')
-    out.append(f'<g transform="translate({ring_c - 12} 294)" fill="{panel}" stroke="{title_color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><title>Current streak flame</title>'
-               '<path d="M12 2C11 6 8 8 8 12 7 11 6 9 7 7 4 10 4 12 4 14 4 18.4 7.6 22 12 22S20 18.4 20 14C20 9 17 5 12 2Z"/>'
-               f'<path d="M12 18c-2 0-3.3-1.4-3.3-3.2 0-1.2.7-2.2 1.8-3.2.2 1.5 1.2 1.9 1.7 2.3.7-.8 1.4-1.6 1.5-3 1.1 1.1 1.9 2.4 1.9 3.8 0 1.9-1.5 3.3-3.6 3.3Z" fill="{title_color}" stroke="none"/>'
-               '<animate attributeName="opacity" values=".88;1;.92;.88" dur="1.2s" repeatCount="indefinite"/></g>')
-    out.append(label(ring_c, 371, f'{stats["currentStreak"]}', size=28, color=value_color, anchor="middle", weight=700))
+    out.append(f'<circle cx="{ring_c}" cy="363" r="{ring_r}" fill="none" stroke="#ABD200" stroke-width="5.75" mask="url(#mask_out_ring_behind_fire)" style="opacity:0;animation:fadein .5s linear forwards .4s"/>')
+    out.append(f'<g transform="translate({ring_c}, 304) scale(1.15)" stroke-opacity="0" style="opacity:0;animation:fadein .5s linear forwards .6s"><title>Current streak flame</title>'
+               '<path d="M -12 -0.5 L 15 -0.5 L 15 23.5 L -12 23.5 L -12 -0.5 Z" fill="none"/>'
+               '<path d="M 1.5 0.67 C 1.5 0.67 2.24 3.32 2.24 5.47 C 2.24 7.53 0.89 9.2 -1.17 9.2 C -3.23 9.2 -4.79 7.53 -4.79 5.47 L -4.76 5.11 C -6.78 7.51 -8 10.62 -8 13.99 C -8 18.41 -4.42 22 0 22 C 4.42 22 8 18.41 8 13.99 C 8 8.6 5.41 3.79 1.5 0.67 Z M -0.29 19 C -2.07 19 -3.51 17.6 -3.51 15.86 C -3.51 14.24 -2.46 13.1 -0.7 12.74 C 1.07 12.38 2.9 11.53 3.92 10.16 C 4.31 11.45 4.51 12.81 4.51 14.2 C 4.51 16.85 2.36 19 -0.29 19 Z" fill="#ABD200" stroke-opacity="0"/></g>')
+    out.append(f'<text x="{ring_c:.1f}" y="372.0" fill="#B7D364" font-family="Arial, sans-serif" font-weight="700" font-size="28px" text-anchor="middle" style="animation:currstreak .6s linear forwards">{esc(stats["currentStreak"])}</text>')
     out.append(label(ring_c, 431, "Current Streak", size=13, color=value_color, anchor="middle", weight=700))
     out.append(label(ring_c, 450, f'{stats["currentStreakStart"]} – {stats["currentStreakEnd"]}', size=10, color=muted, anchor="middle"))
 
