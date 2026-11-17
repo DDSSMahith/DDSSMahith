@@ -395,14 +395,14 @@ def render_summary(stats: dict) -> str:
     out.append(label(cx, cy + 20, "ACTIVE DAYS", size=8, color=muted, anchor="middle", weight=600))
 
     # Profile grade sits in the open space between the account totals and active-days ring.
-    grade_cx, grade_cy, grade_r = 580, 133, 42
+    grade_cx, grade_cy, grade_r = 580, 133, 48
     grade_circumference = 2 * math.pi * grade_r
-    out.append(f'<circle cx="{grade_cx}" cy="{grade_cy}" r="{grade_r}" fill="none" stroke="#263520" stroke-width="8"/>')
-    out.append(f'<circle cx="{grade_cx}" cy="{grade_cy}" r="{grade_r}" fill="none" stroke="{title_color}" stroke-width="8" '
+    out.append(f'<circle cx="{grade_cx}" cy="{grade_cy}" r="{grade_r}" fill="none" stroke="#263520" stroke-width="9"/>')
+    out.append(f'<circle cx="{grade_cx}" cy="{grade_cy}" r="{grade_r}" fill="none" stroke="{title_color}" stroke-width="9" '
                f'stroke-dasharray="{grade_circumference - 7:.1f} 7" transform="rotate(-90 {grade_cx} {grade_cy})">'
                f'<animate attributeName="stroke-dashoffset" from="{grade_circumference - 7:.1f}" to="0" dur="1.2s" fill="freeze"/></circle>')
-    out.append(label(grade_cx, grade_cy + 8, "S", size=34, color=value_color, anchor="middle", weight=700))
-    out.append(label(grade_cx, 194, "PROFILE RATING", size=8, color=muted, anchor="middle", weight=600))
+    out.append(label(grade_cx, grade_cy + 3, "S", size=23, color=value_color, anchor="middle", weight=700))
+    out.append(label(grade_cx, grade_cy + 20, "PROFILE RATING", size=8, color=muted, anchor="middle", weight=600))
 
     # Contribution totals and streaks
     out.append(f'<rect x="20" y="251" width="860" height="220" rx="11" fill="{panel}" stroke="{border}" stroke-width="1.4"/>')

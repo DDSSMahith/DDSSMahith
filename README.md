@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Mahith</h1>
-  <p>AI &amp; ML student building computer-vision tools and useful software.</p>
+  <p>AI &amp; ML Engineer specializing in Computer Vision, Full Stack Development, and workflow automation.</p>
   <p>
     <a href="https://ddssmahith.netlify.app"><img src="https://img.shields.io/badge/PORTFOLIO-161B22?style=flat-square&logo=vercel&logoColor=white" alt="Portfolio" /></a>
     <a href="https://www.linkedin.com/in/d-d-s-s-mahith"><img src="https://img.shields.io/badge/LINKEDIN-161B22?style=flat-square&logo=linkedin&logoColor=0A66C2" alt="LinkedIn" /></a>
@@ -11,7 +11,7 @@
 
 ## About Me
 
-Hey, I’m Mahith — an AI &amp; ML student at Woxsen University who enjoys building things with code and exploring how technology works.
+Hey, I'm Mahith, a developer focused on AI, machine learning, and full stack engineering. I have experience in building real time AI systems, backend APIs, and efficient data pipelines. I enjoy solving complex technical puzzles and writing clean, scalable code.
 
 ## Tech Stack
 
