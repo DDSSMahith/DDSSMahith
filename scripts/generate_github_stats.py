@@ -210,7 +210,13 @@ def draw_calendar(stats: dict, out: list[str]) -> None:
             continue
         base = calendar_green(col / max(1, last_col))
         x, y = ox + step * (col + row), oy + step * (col - row) * 0.5
-        top = [(x, y), (x + step, y - step * .5), (x + 2 * step, y), (x + step, y + step * .5)]
+        # Center each voxel over its calendar tile and inset it slightly. The
+        # exposed floor between columns keeps dense periods from reading as a
+        # single wall of interlocking faces.
+        size = step * .76
+        center_x, center_y = x + step, y
+        top = [(center_x - size, center_y), (center_x, center_y - size * .5),
+               (center_x + size, center_y), (center_x, center_y + size * .5)]
         height = min(50.0, 7.0 + math.log2(count + 1) * 6.2)
         raised = [(px, py - height) for px, py in top]
         left = [top[3], top[0], raised[0], raised[3]]
