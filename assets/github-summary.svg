@@ -9,7 +9,7 @@
 <text x="47.0" y="87.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="600" text-anchor="start">Total Stars Earned:</text>
 <text x="344.0" y="87.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="700" text-anchor="start">46</text>
 <text x="47.0" y="114.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="600" text-anchor="start">Total Commits (last year):</text>
-<text x="344.0" y="114.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="700" text-anchor="start">98</text>
+<text x="344.0" y="114.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="700" text-anchor="start">99</text>
 <text x="47.0" y="141.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="600" text-anchor="start">Total PRs (last year):</text>
 <text x="344.0" y="141.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="700" text-anchor="start">13</text>
 <text x="47.0" y="168.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="13px" font-weight="600" text-anchor="start">Total Issues (last year):</text>
@@ -27,7 +27,7 @@
 <rect x="20" y="251" width="860" height="220" rx="11" fill="#0b100d" stroke="#39443e" stroke-width="1.4"/>
 <text x="46.0" y="283.0" fill="#b6d900" font-family="Arial, sans-serif" font-size="15px" font-weight="700" text-anchor="start">CONTRIBUTIONS &amp; STREAKS</text>
 <path d="M306 304V449M594 304V449" stroke="#59645d" stroke-width="1"/>
-<text x="163.0" y="350.0" fill="#b6d900" font-family="Arial, sans-serif" font-size="31px" font-weight="700" text-anchor="middle">912</text>
+<text x="163.0" y="350.0" fill="#b6d900" font-family="Arial, sans-serif" font-size="31px" font-weight="700" text-anchor="middle">913</text>
 <text x="163.0" y="377.0" fill="#b6d900" font-family="Arial, sans-serif" font-size="13px" font-weight="600" text-anchor="middle">Total Contributions</text>
 <text x="163.0" y="405.0" fill="#59b78d" font-family="Arial, sans-serif" font-size="11px" font-weight="400" text-anchor="middle">2025-11-18 – 2026-11-18</text>
 <circle cx="450" cy="350" r="40" fill="none" stroke="#ABD200" stroke-width="5" mask="url(#mask_out_ring_behind_fire)" style="opacity:0;animation:fadein .5s linear forwards .4s"/>
