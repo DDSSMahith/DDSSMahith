@@ -3,7 +3,7 @@
   <p>AI &amp; ML Engineer specializing in Computer Vision, Full Stack Development, and workflow automation.</p>
   <p>
     <a href="https://ddssmahith.netlify.app"><img src="https://img.shields.io/badge/PORTFOLIO-161B22?style=flat-square&logo=vercel&logoColor=white" alt="Portfolio" /></a>
-    <a href="https://www.linkedin.com/in/d-d-s-s-mahith"><img src="https://img.shields.io/badge/LINKEDIN-161B22?style=flat-square&logo=linkedin&logoColor=0A66C2" alt="LinkedIn" /></a>
+    <a href="https://www.linkedin.com/in/d-d-s-s-mahith"><img src="https://img.shields.io/badge/LINKEDIN-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
     <a href="mailto:ddssmahith11@gmail.com"><img src="https://img.shields.io/badge/EMAIL-161B22?style=flat-square&logo=gmail&logoColor=EA4335" alt="Email" /></a>
     <a href="https://github.com/DDSSMahith"><img src="https://img.shields.io/badge/GITHUB-161B22?style=flat-square&logo=github&logoColor=white" alt="GitHub" /></a>
   </p>
